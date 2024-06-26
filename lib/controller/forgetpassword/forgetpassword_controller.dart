@@ -1,50 +1,39 @@
 import 'package:ecommerceapp/core/class/statusrequest.dart';
 import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:ecommerceapp/core/functions/handlingdatacontroller.dart';
-import 'package:ecommerceapp/data/datasource/remote/auth/signindata.dart';
-import 'package:flutter/material.dart';
+import 'package:ecommerceapp/data/datasource/remote/forgetpassword/checkemaildata.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-abstract class SignInController extends GetxController {
-  signIn();
-  goToSignUp();
-  goToForgetPassword();
-  showPassword();
+abstract class ForgetPasswordController extends GetxController {
+  checkemail();
 }
 
-class SignInControllerImp extends SignInController {
+class ForgetPasswordControllerImp extends ForgetPasswordController {
   late TextEditingController email;
-  late TextEditingController password;
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
-  bool isShowPassword = true;
+  CheckEmailData checkEmailData = CheckEmailData(Get.find());
 
   StatusRequest statusRequest = StatusRequest.none;
 
-  SignInData signInData = SignInData(Get.find());
-
   @override
-  showPassword() {
-    isShowPassword = isShowPassword == true ? false : true;
-    update();
-  }
-
-  @override
-  signIn() async {
+  checkemail() async {
     var formdata = formstate.currentState;
     if (formdata!.validate()) {
       statusRequest = StatusRequest.loading;
 
       update();
-      var response = await signInData.postData(email.text, password.text);
+      var response = await checkEmailData.postData(email.text);
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          Get.offAllNamed(AppRoute.homepage);
+          Get.offAllNamed(AppRoute.verifyCode,
+              arguments: {"email": email.text});
         } else {
           Get.defaultDialog(
               title: "ُWarning",
-              middleText: "the email or password is not correct");
+              middleText: "The Email You Entered is Not Correct");
           statusRequest = StatusRequest.failure;
         }
       }
@@ -55,27 +44,15 @@ class SignInControllerImp extends SignInController {
   }
 
   @override
-  goToSignUp() {
-    Get.offNamed(AppRoute.signup);
-  }
-
-  @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     email = TextEditingController();
-    password = TextEditingController();
   }
 
   @override
   void dispose() {
-    email.dispose();
-    password.dispose();
+    // TODO: implement dispose
     super.dispose();
-  }
-
-  @override
-  goToForgetPassword() {
-    Get.toNamed(AppRoute.forgetpassword);
+    email.dispose();
   }
 }

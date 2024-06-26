@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/constant/routes.dart';
+import 'package:ecommerceapp/core/middleware/mymiddleware.dart';
 import 'package:ecommerceapp/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:ecommerceapp/view/screen/auth/forgetpassword/resetpassword.dart';
 import 'package:ecommerceapp/view/screen/auth/forgetpassword/success_resetpasswod.dart';
@@ -7,17 +8,28 @@ import 'package:ecommerceapp/view/screen/auth/signin.dart';
 import 'package:ecommerceapp/view/screen/auth/signup.dart';
 import 'package:ecommerceapp/view/screen/auth/success_signup.dart';
 import 'package:ecommerceapp/view/screen/auth/verifycodesignup.dart';
+import 'package:ecommerceapp/view/screen/home.dart';
+import 'package:ecommerceapp/view/screen/language.dart';
 import 'package:ecommerceapp/view/screen/onboarding.dart';
-import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
 
-Map<String, Widget Function(BuildContext)> routes = {
-  AppRoute.SignIn: (context) => const SignIn(),
-  AppRoute.onBoarding: (context) => const onBoarding(),
-  AppRoute.signup: (context) => const SignUp(),
-  AppRoute.forgetpassword: (context) => const ForgetPassword(),
-  AppRoute.resetpassword: (context) => const ResetPassword(),
-  AppRoute.verifyCode: (context) => const VerifyCode(),
-  AppRoute.successresetpassword: (context) => const SuccessResetPassword(),
-  AppRoute.successSignup: (context) => const SuccessSignUp(),
-  AppRoute.verifycodeSignup: (context) => const VerifyCodeSignUp(),
-};
+List<GetPage<dynamic>>? routes = [
+  GetPage(name: "/", page: () => const Languages(), middlewares: [
+    MyMiddleWare(),
+  ]), // this used to start directly from the sign in if the user is already logged in
+
+  // GetPage(name: "/", page: () => const Test()),
+  GetPage(name: AppRoute.SignIn, page: () => const SignIn()),
+  GetPage(name: AppRoute.onBoarding, page: () => const onBoarding()),
+  GetPage(name: AppRoute.signup, page: () => const SignUp()),
+  GetPage(name: AppRoute.forgetpassword, page: () => const ForgetPassword()),
+  GetPage(name: AppRoute.resetpassword, page: () => const ResetPassword()),
+  GetPage(name: AppRoute.verifyCode, page: () => const VerifyCode()),
+  GetPage(
+      name: AppRoute.successresetpassword,
+      page: () => const SuccessResetPassword()),
+  GetPage(name: AppRoute.successSignup, page: () => const SuccessSignUp()),
+  GetPage(name: AppRoute.homepage, page: () => const HomePage()),
+  GetPage(
+      name: AppRoute.verifycodeSignup, page: () => const VerifyCodeSignUp()),
+];

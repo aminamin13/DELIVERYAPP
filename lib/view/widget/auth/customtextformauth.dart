@@ -11,6 +11,7 @@ class CustomTextFormAuth extends StatelessWidget {
     this.focusNode, 
     required this.keyboardType,
     required this.obscureText,
+    this.onTapIcon,
   });
 
   final String hintText;
@@ -21,6 +22,7 @@ class CustomTextFormAuth extends StatelessWidget {
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final void Function()? onTapIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +50,13 @@ class CustomTextFormAuth extends StatelessWidget {
           label: Container(
               margin: const EdgeInsets.symmetric(horizontal: 9),
               child: Text(labelText)),
-          suffixIcon: Padding(
-            padding: const EdgeInsets.only(right: 20.0, left: 20),
-            child: Icon(
-              iconData,
+          suffixIcon: InkWell(
+            onTap:onTapIcon,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20.0, left: 20),
+              child: Icon(
+                iconData,
+              ),
             ),
           ),
           border: const OutlineInputBorder(

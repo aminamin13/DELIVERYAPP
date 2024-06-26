@@ -1,8 +1,10 @@
+import 'package:ecommerceapp/binding/initialbindin.dart';
 import 'package:ecommerceapp/core/constant/color.dart';
 import 'package:ecommerceapp/core/localization/changelocal.dart';
 import 'package:ecommerceapp/core/localization/translation.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/routes.dart';
+import 'package:ecommerceapp/test_view.dart';
 import 'package:ecommerceapp/view/screen/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,7 +28,9 @@ class MyApp extends StatelessWidget {
         locale: controller.langauge,
         theme: controller.appTheme ,
         debugShowCheckedModeBanner: false,
-        routes: routes,
-        home: const Languages());
+        getPages: routes,
+        initialBinding: InitialBindings(),
+        );
+        
   }
 }
