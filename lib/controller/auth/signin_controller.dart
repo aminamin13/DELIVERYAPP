@@ -1,7 +1,9 @@
 import 'package:ecommerceapp/core/class/statusrequest.dart';
 import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:ecommerceapp/core/functions/handlingdatacontroller.dart';
+import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/data/datasource/remote/auth/signindata.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,6 +25,8 @@ class SignInControllerImp extends SignInController {
 
   SignInData signInData = SignInData(Get.find());
 
+  MyServices myServices = Get.find();
+
   @override
   showPassword() {
     isShowPassword = isShowPassword == true ? false : true;
@@ -40,7 +44,16 @@ class SignInControllerImp extends SignInController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          Get.offAllNamed(AppRoute.homepage);
+          myServices.sharedPreferences
+              .setInt("id", response['data']['users_id']);
+          myServices.sharedPreferences
+              .setString("username", response['data']['users_name']);
+          myServices.sharedPreferences
+              .setString("email", response['data']['users_email']);
+          myServices.sharedPreferences
+              .setString("phone", response['data']['users_phone']);
+          myServices.sharedPreferences.setString("step", "2");
+          Get.offAllNamed(AppRoute.homescreen);
         } else {
           Get.defaultDialog(
               title: "ُWarning",
@@ -61,7 +74,12 @@ class SignInControllerImp extends SignInController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
+    FirebaseMessaging.instance.getToken().then((value) {
+      String? token = value;
+
+      print(token);
+    });
+
     super.onInit();
     email = TextEditingController();
     password = TextEditingController();

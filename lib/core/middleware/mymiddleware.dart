@@ -9,9 +9,15 @@ class MyMiddleWare extends GetMiddleware {
   MyServices myServices = Get.find();
   @override
   RouteSettings? redirect(String? route) {
-    if (myServices.sharedPreferences.getString("onboarding") == "1" ) {
+
+    // if users is already logged in, it will take him to home page
+      if (myServices.sharedPreferences.getString("step") == "2") {
+      return const RouteSettings(name: AppRoute.homescreen);
+    }
+    if (myServices.sharedPreferences.getString("step") == "1" ) {
       return const RouteSettings(name: AppRoute.SignIn);
     }
+   
     ;
   }
 }

@@ -1,5 +1,12 @@
 class AppLink {
   static const String server = 'https://amineamine.com/ecommerce';
+
+
+  //==================images===========================
+  static const String imagestatic = 'https://amineamine.com/ecommerce/upload';
+  static const String imagecategories = '$imagestatic/categories';
+  static const String imageitems = '$imagestatic/items';
+
   static const String test = '$server/test.php';
 
   // ======================== Auth ===========================//
@@ -13,4 +20,12 @@ class AppLink {
       '$server/forgetpassword/verifycode.php';
   static const String resetPassword =
       '$server/forgetpassword/resetpassword.php';
+
+      //======================= home ============================
+     static const String homepage = '$server/home.php'; 
+
+
+     //======================= items ============================
+     static const String items = '$server/items/items.php';
+     
 }
