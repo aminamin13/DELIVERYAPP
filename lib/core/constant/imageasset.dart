@@ -12,5 +12,6 @@ class AppImageAsset {
   static const String nodata = "$rootImages/lottie/nodata.json";
   static const String server = "$rootImages/lottie/server.json";
   static const String offline = "$rootImages/lottie/offline.json";
-
+  static const String avatar = "$rootImages/images/avatar.png";
+  static const String logoapp = "$rootImages/images/logoapp.png";
 }

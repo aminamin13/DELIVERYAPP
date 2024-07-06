@@ -10,4 +10,7 @@ class AppRoute {
   static const String verifycodeSignup = '/verifycodesignup';
   static const String homescreen = '/home';
   static const String items = '/items';
+  static const String productsdetails = '/productdetails';
+  static const String myfavorite = '/myfavorite';
+  static const String cart = '/cart';
 }

@@ -13,7 +13,7 @@ class CustomCategorisItems extends GetView<ItemsControllerImp> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      height: 120,
+      height: 60,
       child: ListView.separated(
           separatorBuilder: (context, index) => const SizedBox(width: 10),
           itemCount: controller.categories.length,

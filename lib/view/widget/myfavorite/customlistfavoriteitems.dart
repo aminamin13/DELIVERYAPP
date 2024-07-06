@@ -1,41 +1,37 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerceapp/controller/favorite_controller.dart';
-import 'package:ecommerceapp/controller/items_controller.dart';
+import 'package:ecommerceapp/controller/myfavorite_controller.dart';
 import 'package:ecommerceapp/core/constant/color.dart';
 import 'package:ecommerceapp/core/functions/translatedatabase.dart';
-import 'package:ecommerceapp/data/model/itemsmodel.dart';
+import 'package:ecommerceapp/data/model/myfavoritemodel.dart';
 import 'package:ecommerceapp/linkapi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomListItems extends GetView<ItemsControllerImp> {
-  const CustomListItems({
+class CustomListFavoriteItems extends GetView<MyfavoriteController> {
+  const CustomListFavoriteItems({
     super.key,
-    required this.itemsModel,
+    required this.myFavoriteModel,
   });
-  final ItemsModel itemsModel;
+  final MyFavoriteModel myFavoriteModel;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          controller.goToPageProductDetails(itemsModel);
+          // controller.goToPageProductDetails(itemsModel);
         },
         child: Card(
           child: Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Hero(
-                tag: "${itemsModel.itemsId}",
-                child: CachedNetworkImage(
-                  imageUrl: '${AppLink.imageitems}/${itemsModel.itemsImage}',
-                  height: 120,
-                  fit: BoxFit.fill,
-                ),
+              CachedNetworkImage(
+                imageUrl: '${AppLink.imageitems}/${myFavoriteModel.itemsImage}',
+                height: 120,
+                fit: BoxFit.fill,
               ),
               Text(
-                '${translateDatabase(itemsModel.itemsNameAr, itemsModel.itemsName)}',
+                '${translateDatabase(myFavoriteModel.itemsNameAr, myFavoriteModel.itemsName)}',
                 style: const TextStyle(
                     color: AppColor.black,
                     fontSize: 16,
@@ -75,35 +71,22 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '${itemsModel.itemsPrice} \$',
+                    '${myFavoriteModel.itemsPrice} \$',
                     style: const TextStyle(
                         color: AppColor.primaryColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         fontFamily: "sans"),
                   ),
-                  GetBuilder<FavoriteController>(
-                    builder: (controller) {
-                      return IconButton(
-                          onPressed: () {
-                            if(controller.isFavorite[itemsModel.itemsId] == 1){
-                              controller.setFavorite(itemsModel.itemsId, 0);
-                              controller.removeFavorite(itemsModel.itemsId.toString());
-                            }else{
-                              controller.setFavorite(itemsModel.itemsId, 1);
-                                                            controller
-                                .addFavorite(itemsModel.itemsId.toString());
-
-                            }
-                          },
-                          icon: Icon(
-                            controller.isFavorite[itemsModel.itemsId] == 1
-                                ? Icons.favorite
-                                : Icons.favorite_border_outlined,
-                            color: AppColor.primaryColor,
-                          ));
-                    }
-                  )
+                  IconButton(
+                      onPressed: () {
+                        controller
+                            .deleteData(myFavoriteModel.favoriteId.toString());
+                      },
+                      icon: const Icon(
+                        Icons.delete,
+                        color: AppColor.black,
+                      ))
                 ],
               )
             ]),

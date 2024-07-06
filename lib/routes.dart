@@ -8,10 +8,13 @@ import 'package:ecommerceapp/view/screen/auth/signin.dart';
 import 'package:ecommerceapp/view/screen/auth/signup.dart';
 import 'package:ecommerceapp/view/screen/auth/success_signup.dart';
 import 'package:ecommerceapp/view/screen/auth/verifycodesignup.dart';
-import 'package:ecommerceapp/view/screen/items.dart';
+import 'package:ecommerceapp/view/screen/cart.dart';
 import 'package:ecommerceapp/view/screen/homescreen.dart';
+import 'package:ecommerceapp/view/screen/items.dart';
 import 'package:ecommerceapp/view/screen/language.dart';
+import 'package:ecommerceapp/view/screen/myfavorite.dart';
 import 'package:ecommerceapp/view/screen/onboarding.dart';
+import 'package:ecommerceapp/view/screen/productdetails.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -35,4 +38,7 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.verifycodeSignup, page: () => const VerifyCodeSignUp()),
   GetPage(name: AppRoute.items, page: () => const ItemsPage()),
 
+  GetPage(name: AppRoute.productsdetails, page: () => const ProductDetails()),
+  GetPage(name: AppRoute.myfavorite, page: () => const MyFavorite()),
+  GetPage(name: AppRoute.cart, page: () => const Cart()),
 ];

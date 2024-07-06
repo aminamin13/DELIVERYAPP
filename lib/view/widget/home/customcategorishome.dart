@@ -1,6 +1,6 @@
 import 'package:ecommerceapp/controller/home_controller.dart';
-import 'package:ecommerceapp/controller/homescreen_controller.dart';
 import 'package:ecommerceapp/core/constant/color.dart';
+import 'package:ecommerceapp/core/functions/translatedatabase.dart';
 import 'package:ecommerceapp/data/model/categoriesmodel.dart';
 import 'package:ecommerceapp/linkapi.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,6 @@ class CustomCategorisHome extends GetView<HomeControllerImp> {
   const CustomCategorisHome({
     super.key,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +45,8 @@ class Categoris extends GetView<HomeControllerImp> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.goToItems(controller.categories, i!, categoriesModel.categoriesId!);
+        controller.goToItems(
+            controller.categories, i!, categoriesModel.categoriesId!);
       },
       child: Column(
         children: [
@@ -67,7 +67,8 @@ class Categoris extends GetView<HomeControllerImp> {
               ),
             ),
           ),
-          Text("${categoriesModel.categoriesName}",
+          Text(
+              "${translateDatabase(categoriesModel.categoriesNameAr, categoriesModel.categoriesName)}",
               style: const TextStyle(fontSize: 13, color: AppColor.black))
         ],
       ),

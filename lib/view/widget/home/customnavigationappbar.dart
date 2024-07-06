@@ -23,8 +23,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 return index == 2
                     ? const Spacer()
                     : CustomBottumAppBar(
-                        title: controller.titlebottomappbar[i],
-                        icon: controller.iconbottomappbar[i],
+                        title: controller.bottomappbar[i]['title'],
+                        icon: controller.bottomappbar[i]['icon'],
                         isactive: controller.currentPage == i ? true : false,
                         onPressed: () {
                           controller.changePage(i);

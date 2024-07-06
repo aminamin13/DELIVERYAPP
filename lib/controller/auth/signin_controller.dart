@@ -44,16 +44,21 @@ class SignInControllerImp extends SignInController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          myServices.sharedPreferences
-              .setInt("id", response['data']['users_id']);
-          myServices.sharedPreferences
-              .setString("username", response['data']['users_name']);
-          myServices.sharedPreferences
-              .setString("email", response['data']['users_email']);
-          myServices.sharedPreferences
-              .setString("phone", response['data']['users_phone']);
-          myServices.sharedPreferences.setString("step", "2");
-          Get.offAllNamed(AppRoute.homescreen);
+          if (response['data']['users_approve'] == 1) {
+            myServices.sharedPreferences
+                .setInt("id", response['data']['users_id']);
+            myServices.sharedPreferences
+                .setString("username", response['data']['users_name']);
+            myServices.sharedPreferences
+                .setString("email", response['data']['users_email']);
+            myServices.sharedPreferences
+                .setString("phone", response['data']['users_phone']);
+            myServices.sharedPreferences.setString("step", "2");
+            Get.offAllNamed(AppRoute.homescreen);
+          } else {
+            Get.toNamed(AppRoute.verifycodeSignup,
+                arguments: {'email': email.text});
+          }
         } else {
           Get.defaultDialog(
               title: "ُWarning",

@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/controller/homescreen_controller.dart';
 import 'package:ecommerceapp/core/constant/color.dart';
+import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:ecommerceapp/view/widget/home/customnavigationappbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,7 +16,9 @@ class HomeScreen extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
               backgroundColor: AppColor.primaryColor,
               shape: const CircleBorder(),
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(AppRoute.cart);
+              },
               child: const Icon(
                 Icons.shopping_basket_outlined,
                 color: Colors.white,

@@ -7,6 +7,7 @@ class AppColor {
   static const Color backgroundcolor = Color(0xffF8F9FD);
   static const Color secondarycolor = Color(0xffc0392b);
   static const Color svgColor = Color(0xFFffb9aa);
-
   static const Color grey2 = Color.fromRGBO(97, 97, 97, 1);
+  static const Color fourthColor = Color(0xff0d3056);
+  static const Color thirdColor = Color.fromARGB(255, 255, 179, 170);
 }
