@@ -65,7 +65,7 @@ class ProductDetails extends StatelessWidget {
                             controller.remove();
                           },
                           count: controller.countItems,
-                          price: "${controller.itemsModel.itemsPrice}",
+                          price: "${controller.itemsModel.itemsdiscountprice}",
                         ),
                         Text(
                           "${translateDatabase('${controller.itemsModel.itemsDescAr} ${controller.itemsModel.itemsDescAr} ${controller.itemsModel.itemsDescAr}', '${controller.itemsModel.itemsDesc} ${controller.itemsModel.itemsDesc} ${controller.itemsModel.itemsDesc}')}",

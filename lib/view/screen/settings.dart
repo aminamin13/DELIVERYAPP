@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/controller/settings_controller.dart';
 import 'package:ecommerceapp/core/constant/color.dart';
 import 'package:ecommerceapp/core/constant/imageasset.dart';
+import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -51,7 +52,9 @@ class Settings extends StatelessWidget {
                   trailing: CupertinoSwitch(value: true, onChanged: (value) {}),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoute.addressview);
+                  },
                   title: const Text("Address"),
                   trailing: const Icon(
                     Icons.location_on_outlined,

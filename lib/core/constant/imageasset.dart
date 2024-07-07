@@ -14,4 +14,5 @@ class AppImageAsset {
   static const String offline = "$rootImages/lottie/offline.json";
   static const String avatar = "$rootImages/images/avatar.png";
   static const String logoapp = "$rootImages/images/logoapp.png";
+  static const String salelogo = "$rootImages/images/001-sale.png";
 }

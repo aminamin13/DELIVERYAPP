@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 ThemeData themeEnglish = ThemeData(
     fontFamily: "PlayfairDisplay",
+    appBarTheme: const AppBarTheme(backgroundColor: AppColor.primaryColor),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: AppColor.primaryColor, foregroundColor: Colors.white),
     primarySwatch: Colors.blue,
     textTheme: const TextTheme(
         headlineLarge: TextStyle(
@@ -27,6 +30,7 @@ ThemeData themeEnglish = ThemeData(
             height: 2)));
 ThemeData themeArabic = ThemeData(
     fontFamily: "Cairo",
+    appBarTheme: const AppBarTheme(backgroundColor: AppColor.primaryColor),
     primarySwatch: Colors.blue,
     textTheme: const TextTheme(
         headlineLarge: TextStyle(
