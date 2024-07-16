@@ -47,6 +47,7 @@ class SignInControllerImp extends SignInController {
           if (response['data']['users_approve'] == 1) {
             myServices.sharedPreferences
                 .setInt("id", response['data']['users_id']);
+            int usersid = myServices.sharedPreferences.getInt("id")!;
             myServices.sharedPreferences
                 .setString("username", response['data']['users_name']);
             myServices.sharedPreferences
@@ -54,6 +55,9 @@ class SignInControllerImp extends SignInController {
             myServices.sharedPreferences
                 .setString("phone", response['data']['users_phone']);
             myServices.sharedPreferences.setString("step", "2");
+            FirebaseMessaging.instance.subscribeToTopic("users");
+            FirebaseMessaging.instance.subscribeToTopic("users$usersid");
+
             Get.offAllNamed(AppRoute.homescreen);
           } else {
             Get.toNamed(AppRoute.verifycodeSignup,

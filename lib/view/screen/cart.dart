@@ -1,6 +1,5 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:ecommerceapp/core/class/handlingdataview.dart';
-import 'package:ecommerceapp/view/widget/cart/appbarcart.dart';
 import 'package:ecommerceapp/view/widget/cart/custombottomnavigationbar.dart';
 import 'package:ecommerceapp/view/widget/cart/customitemcardlist.dart';
 import 'package:ecommerceapp/view/widget/cart/topcarttitle.dart';
@@ -14,11 +13,19 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Cart"),
+      ),
       bottomNavigationBar: GetBuilder<CartController>(builder: (controller) {
         return CustomBottomNavigationBarCart(
+          controllerCoupon: controller.controllerCoupon,
+          onPressedApply: () {
+            controller.checkCoupon();
+          },
           price: cartController.priceorders,
-          shipping: "100",
-          total: cartController.priceorders,
+          discount: int.parse("${cartController.discountCoupon}"),
+          total: cartController.getTotalPrice(),
+          shipping: 0,
         );
       }),
       body: GetBuilder<CartController>(
@@ -28,9 +35,6 @@ class Cart extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 child: ListView(
                   children: [
-                    const AppBarCart(
-                      title: "My Cart",
-                    ),
                     const SizedBox(
                       height: 10,
                     ),

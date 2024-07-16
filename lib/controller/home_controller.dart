@@ -4,6 +4,7 @@ import 'package:ecommerceapp/core/functions/handlingdatacontroller.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/data/datasource/remote/home_data.dart';
 import 'package:ecommerceapp/data/model/itemsmodel.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,9 +48,15 @@ class HomeControllerImp extends HomeController {
     id = myServices.sharedPreferences.getInt("id");
   }
 
+  gettoken() async {
+    String? token = await FirebaseMessaging.instance.getToken();
+    print(token);
+  }
+
   @override
   void onInit() {
     // TODO: implement onInit
+    gettoken();
     super.onInit();
     initialData();
     search = TextEditingController();

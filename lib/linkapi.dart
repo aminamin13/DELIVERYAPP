@@ -44,5 +44,29 @@ static const String cartAdd = '$server/cart/add.php';
 static const String cartView = '$server/cart/view.php';
 static const String cartRemove = '$server/cart/remove.php';
   static const String countCartItems = '$server/cart/getcountitems.php';
-     
+
+
+
+// ================== address ===========================
+static const String addressAdd = '$server/address/add.php';
+static const String addressUpdate = '$server/address/update.php';
+static const String addressView = '$server/address/view.php';
+static const String addressRemove = '$server/address/delete.php';
+
+// ==================coupons ===========================
+static const String checkCoupon = '$server/coupon/checkcoupon.php';
+
+
+
+//=================== orders ===========================
+static const String orderCheckout = '$server/orders/checkout.php';
+  static const String pendingOrders = '$server/orders/pending.php';
+
+
+
+//================= notifications===================
+static const String viewNotification = '$server/notification.php';
+
+
 }
+

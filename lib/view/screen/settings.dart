@@ -53,6 +53,24 @@ class Settings extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
+                    Get.toNamed(AppRoute.pendingorders);
+                  },
+                  title: const Text("Orders"),
+                  trailing: const Icon(
+                    Icons.list_alt_outlined,
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Get.toNamed(AppRoute.archivedorders);
+                  },
+                  title: const Text("Archived Orders"),
+                  trailing: const Icon(
+                    Icons.pan_tool_sharp,
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
                     Get.toNamed(AppRoute.addressview);
                   },
                   title: const Text("Address"),
