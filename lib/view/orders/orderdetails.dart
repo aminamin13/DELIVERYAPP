@@ -116,7 +116,7 @@ class OrdersDetails extends StatelessWidget {
                     onMapCreated: (GoogleMapController GMcontroller) {
                       controller.completercontroller!.complete(GMcontroller);
                     },
-                  ),
+                  ),s
                 ),
               )
             ],
